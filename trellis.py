@@ -49,8 +49,7 @@ class Trellis:
         for state in self.states:
             if V[decoded_message_length][state]["cost"] == lowest_cost:
                 end_state = state
-                # print(end_state)
-        # print(V)
+
         if end_state is None:
             raise TypeError 
         else:

@@ -17,7 +17,7 @@ def get_ber(p):
     message = np.zeros(1024, dtype=int)
     message[:512] = 1
 
-    for _ in range(2500):
+    for _ in range(5000):
         np.random.shuffle(message)
 
         encoded_message = TurboEncoder().encode(message)
@@ -34,12 +34,14 @@ def get_ber(p):
 def plot_ber():
     ber_list = []
     p_list = []
-    p = 0.01
+    p = 0.795
     for _ in range(40):
-        p += 0.01
+        p += 0.005
+        print(f"Current probability: p = {p}")
         p_list.append(p)
         ber = get_ber(p)
         ber_list.append(ber)
+
     ber_list = np.array(ber_list)
     p_list = np.array(p_list)
     plt.plot(p_list, ber_list)
